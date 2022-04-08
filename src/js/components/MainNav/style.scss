@@ -1,0 +1,18 @@
+.dropdown {
+  .auth-dropdown {
+    padding: 0 10px;
+    & > div {
+      padding: 5px 0 !important;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  #authDropDown {
+    font-size: 25px;
+    text-align: right;
+    &:after {
+      display: none;
+    }
+  }
+}

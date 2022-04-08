@@ -1,0 +1,21 @@
+.btn-select {
+    @extend .d-flex;
+    @extend .justify-content-between;
+    button {
+        @extend .mx-1;
+        @extend .btn;
+        @extend .btn-outline-light;
+        height: 4.4rem;
+        width: 4.4rem;
+        border-radius: $border-radius-lg*10;
+        &.active {
+            color: $gray-900!important;
+        }
+        &:first-child {
+            margin-left: 0rem !important;
+        }
+        &:last-child {
+            margin-right: 0rem !important;
+        }
+    }
+}

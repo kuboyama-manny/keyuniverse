@@ -1,0 +1,457 @@
+/*!
+ * Custom Bootstrap, based on Twitter Bootstrap
+ * This styleguide imports all scss files from original bootstrap
+ * and overrides only those that are modified with new custom files
+ */
+// Main Scss
+//Bootstrap
+// And this
+@import './theme/bootstrap';
+@import '../../node_modules/aos/dist/aos.css';
+@import './theme/game-card';
+@import './theme/orders';
+@import './theme/button-select';
+
+@import '../js/components/AjaxLoader/style';
+@import '../js/components/MainNav/style';
+@import '../js/components/Spinner/style';
+
+body {
+  height: 100vh;
+  background-image: url('../images/header-bg.png');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% auto;
+}
+
+.font-spacing {
+  letter-spacing: .2rem;
+}
+
+.card-special {
+  position: relative;
+  width: 45rem;
+
+  &:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+
+  .card-special-body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    @extend .d-flex;
+    @extend .justify-content-center;
+    @extend .align-items-center;
+
+  }
+
+
+  &.card-left {
+    @include border-left-radius($border-radius-lg);
+    @include gradient-directional(theme-color('primary'), theme-color('info'), 180deg)
+  }
+
+  &.card-right {
+    @include border-right-radius($border-radius-lg);
+    @include gradient-directional(theme-color('primary'), theme-color('info'))
+  }
+}
+
+
+.shadow-lg {
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
+}
+
+
+.btn.btn-outline-primary {
+  box-shadow: 0 0 4rem rgba(theme-color('primary'), .2);
+}
+
+.card {
+  &.shadow-lg {
+    z-index: $zindex-dropdown;
+  }
+}
+
+.clickable {
+  transition: all .2s;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.product-page {
+  .image-section {
+    align-self: baseline;
+    .product-images {
+      height: 100%;
+      .product-main-card {
+        width: 100%;
+        height: 100%;
+        .main-image {
+          width: 100%;
+          margin-bottom: 15px;
+          overflow: hidden;
+          border-radius: $border-radius-lg;
+          box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.4);
+          .product-game-image {
+            margin-bottom: 0 !important;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            transition: ease .3s;
+            opacity: .8;
+          }
+        }
+
+        &:hover {
+          cursor: pointer;
+          .product-game-image {
+            transform: scale(1.05);
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .clickable {
+    height: auto;
+    width: 16%;
+    border-radius: $border-radius;
+  }
+}
+
+.ov-h {
+  overflow: hidden;
+}
+
+.btn {
+  &.btn-gradient {
+    background: transparent;
+    color: $white;
+    @include gradient-x(theme-color('primary'), theme-color('info'));
+    border: 0;
+    @extend .py-2;
+
+    &:hover {
+      box-shadow: 0 0 1rem rgba(theme-color('primary'), .5);
+    }
+  }
+}
+
+.nav-custom {
+  border-left: 1px solid rgba(255, 255, 255, .4);
+
+  .nav-item {
+    .nav-link {
+      transition: all .2s;
+      font-weight: $font-weight-normal;
+      color: rgba(255, 255, 255, .5);
+      border-left: 4px solid;
+      border-color: transparent;
+      padding: $nav-link-padding-y*1.1 $nav-link-padding-x;
+
+      svg {
+        @extend .mr-2;
+      }
+
+      &.active, &:hover {
+        color: $white;
+        border-color: theme-color('primary');
+        cursor: pointer;
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 1.4rem;
+  }
+}
+
+.bg-gradient-secondary {
+  background-image: linear-gradient(to right, #463e73, #3a4166) !important;
+
+  .search-input-section {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .search-icon {
+      position: absolute;
+      left: 26px;
+    }
+
+    .close-input {
+      position: absolute;
+      right: 26px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    input {
+      width: 100%;
+      height: 36px;
+      background-color: $secondary;
+      border: none;
+      border-radius: 3px;
+      color: $white;
+      padding-left: 30px;
+
+      &:focus {
+        outline: 0;
+      }
+    }
+
+    .search-result {
+      position: absolute;
+      top: 42px;
+      left: 15px;
+      right: 15px;
+      //display: flex;
+      //justify-content: center;
+      //align-items: center;
+      background: #242a42;
+      border-radius: 3px;
+      -webkit-box-shadow: 0px 0px 4px -2px rgba(0,0,0,0.75);
+      -moz-box-shadow: 0px 0px 4px -2px rgba(0,0,0,0.75);
+      box-shadow: 0px 0px 4px -2px rgba(0,0,0,0.75);
+      z-index: 2;
+      padding: 10px 0 0 0;
+
+      &.full-view {
+        overflow-y: visible;
+      }
+
+      &.some-view {
+        max-height: 400px;
+        overflow-y: scroll;
+      }
+
+      .games-list {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .game-row {
+          &:hover {
+            cursor: pointer;
+            background-color: rgba(99, 0, 255, 0.4);
+          }
+          & > div:first-child {
+            & > div:nth-child(2) {
+              & > p:nth-child(2) {
+                font-size: 0.75rem;
+                font-style: italic;
+              }
+            }
+          }
+          & > div:nth-child(2) {
+            display: flex;
+            align-items: center;
+            & > p {
+              font-size: 0.75rem;
+              word-break: break-all;
+            }
+          }
+          & > div:nth-child(3) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & > p {
+              color: $black;
+              font-weight: 600;
+              background-color: $white;
+              border-radius: 3px;
+            }
+          }
+        }
+      }
+      .load-more {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        background: #242a42;
+        border-top: 1px solid rgba(255,255,255,0.2);
+      }
+    }
+  }
+}
+
+.custom-dropdown-menu {
+  background-color: theme-color('secondary');
+  min-width: $dropdown-min-width*3.5;
+  &.auth-dropdown {
+    min-width: $dropdown-min-width;
+  }
+  @extend .shadow-lg;
+
+  .dropdown-item {
+    color: $white;
+    @extend .py-2;
+    @extend .px-3;
+    @extend .mb-1;
+    // border-top: 1px solid rgba(255,255,255,.1);
+    @extend .d-flex;
+    @extend .justify-content-start;
+    @extend .align-items-start;
+    white-space: normal;
+
+    &:hover {
+      color: $gray-900;
+    }
+
+    .status-icon {
+      height: 5px;
+      width: 10px;
+      font-size: 5px;
+    }
+  }
+
+  .dropdown-divider {
+    border-top: 1px solid rgba(255, 255, 255, .1);
+  }
+
+  .dropdown-header {
+    color: $white;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    @extend .px-3;
+  }
+}
+
+.order-list-item {
+  & > img {
+    width: 5%;
+  }
+}
+
+.notifications-wrapper {
+  .notifications-tr {
+    top: 10px !important;
+    width: $notification-width !important;
+    .notification {
+      border-top: none !important;
+      border-radius: $notification-border-radius !important;
+      height: auto !important;
+
+      &.notification-success {
+        background-color: $notification-success-color !important;
+      }
+
+      &.notification-error {
+        background-color: $notification-error-color !important;
+      }
+
+      &.notification-warning {
+        background-color: $notification-warning-color !important;
+      }
+
+      &.notification-info {
+        background-color: $notification-info-color !important;
+      }
+
+      .notification-title {
+        font-size: 22px;
+        color: $white;
+      }
+      .notification-message {
+        font-size: 16px;
+        font-weight: bold;
+        color: $white;
+      }
+      .notification-dismiss {
+        top: 7px !important;
+        background-color: transparent !important;
+        font-size: 22px !important;
+      }
+    }
+  }
+}
+
+.checking-status {
+  padding: 2rem 5rem;
+  border-radius: 0.5rem;
+  background-image: linear-gradient(to top, $checkout-status-gradient-1, $checkout-status-gradient-2);
+
+  & > h5 {
+    font-weight: 100;
+    color: $checkout-status-title;
+    margin-bottom: 20px;
+  }
+
+  & > .error {
+    background-color: $checkout-status-error;
+    border-radius: 0.5rem;
+    padding: 2rem 2rem;
+  }
+}
+
+.profile-image-container {
+  position: relative;
+  &:focus {
+    outline: 0;
+  }
+  .image-editor {
+    display: none;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    cursor: pointer;
+  }
+  &:hover {
+    .image-editor {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    img {
+      opacity: .3;
+    }
+  }
+}
+
+.product-keys {
+  .product-key {
+    border: 2px solid $white;
+    border-radius: 4px;
+  }
+}
+
+.offer-product-key {
+  border: 1.5px solid white;
+  border-radius: 6px;
+  font-size: 0.75rem;
+
+  & > div:first-child {
+    flex: 2;
+    text-align: center;
+  }
+
+  .product-key-status {
+    flex: 1;
+    text-align: center;
+    border-left: 1.5px solid $white;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+
+    &.active {
+      background-color: $product-key-valid;
+    }
+
+    &.sold {
+      background-color: $product-key-sold;
+    }
+  }
+}

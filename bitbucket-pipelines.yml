@@ -1,0 +1,14 @@
+image: nikolaik/python-nodejs
+
+pipelines:
+  branches:
+    master:
+    - step:
+        caches:
+          - node
+        script:
+          - npm install
+          - npm rebuild node-sass
+          - npm run build
+          - pip install awscli --upgrade --ignore-installed six
+          - aws s3 sync ./dist s3://development.keyuniverse.com

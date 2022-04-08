@@ -1,0 +1,20 @@
+.order-list {
+  .order-list-item {
+    @include border-radius;
+    @extend .px-2;
+    @extend .py-1;
+    transition: all .2s;
+
+    &:hover {
+      background-color: rgba(theme-color('info'), .4);
+    }
+
+    .clickable {
+      @include border-radius;
+
+      &:hover {
+        background-color: darken(theme-color('info'), 10%);
+      }
+    }
+  }
+}

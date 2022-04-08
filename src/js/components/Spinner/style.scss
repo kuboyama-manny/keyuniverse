@@ -1,0 +1,30 @@
+.circle-spinner {
+  display: inline-block;
+  width: 90px;
+  height: 90px;
+
+  &.none {
+    display: none;
+  }
+
+  &:after {
+    content: " ";
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 8px solid #ecb300;
+    border-color: #ecb300 transparent #ecb300 transparent;
+    animation: circle-spinner 0.8s linear infinite;
+  }
+}
+
+@keyframes circle-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
